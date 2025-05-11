@@ -1,1 +1,1 @@
-# Learn_TestNG_with_Omkar
+# Learn TestNG with Omkar
