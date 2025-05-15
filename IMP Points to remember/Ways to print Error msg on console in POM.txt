@@ -1,1 +1,35 @@
+Ways to print error message on console
 
+1. Use try catch block with Assert in it
+
+```
+try {
+			Assert.assertEquals(driver.getCurrentUrl(), dashboardLink,
+					"Login Failed! Username or password is incorrect");
+			System.out.println("Login is Successful");
+		} catch (Exception e) {
+			System.out.println("Login Failed: " + e.getMessage());
+		}
+```
+
+2. Use Custom Listner class
+```
+public class PracticeLoginListner implements ITestListener {
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		System.out.println("Test Passed: " + result.getTestName());
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		System.out.println("Test Failed: " + result.getTestName());
+		System.out.println("Error Message: " + result.getThrowable().getMessage());
+	}
+	
+	@Override
+    public void onTestSkipped(ITestResult result) {
+        System.out.println("Test Skipped: " + result.getName());
+    }
+}
+```
